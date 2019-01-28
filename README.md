@@ -12,24 +12,34 @@ mkdir -p data/classification
 3. Unzip all .zip files (Walk, Run, ..., Skip) and put all of them under `data/classification`
 4. run the following lines to get the preprocessed data:
 ```
-    chmod +x ./get_data.sh
-    ./get_data.sh
+chmod +x ./get_data.sh
+./get_data.sh
 ```
 
 Training
 ---
-1. GPU mode: 
+1. Pretrain the encoder and classifier
 ```
-python main.py --use_cuda
+python train_attr_cls.py --use_cuda # GPU mode, or
+python train_attr_cls.py            # CPU mode
 ```
-2. CPU mode:
+2. Train VideoVAE
 ```
-python main.py
+python main.py --use_cuda --cls_weight path/to/cls_weight # GPU mode, or
+python main.py --cls_weight path/to/cls_weight            # CPU mode
+```
+For example,
+```
+python train_attr_cls.py --exp exp_test --use_cuda
+```
+and after running ~10 epochs, run
+```
+python main.py --use_cuda --cls_weight ExperimentAttr/exp_test/checkpoint/classifier_10.pth
 ```
 
 Tensorboard
 ---
-1. run 
+1. Run 
 ```
 tensorboard --logdir .
 ```
