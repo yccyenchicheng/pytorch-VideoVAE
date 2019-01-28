@@ -2,9 +2,14 @@
 
 A pytorch implementation of VideoVAE: https://arxiv.org/pdf/1803.08085.pdf
 
+Requirement
+---
+- OS: Ubuntu 16.04
+- Packages: torch, torchvision, numpy, opencv, matplotlib, tensorflow (for tensorboard)
+
 Prepare Data
 ---
-1. Download data from http://www.wisdom.weizmann.ac.il/~vision/SpaceTimeActions.html, under the section of ``Classification Database''.
+1. Download data from http://www.wisdom.weizmann.ac.il/~vision/SpaceTimeActions.html, under the section of **Classification Database**.
 2. Make a dir, for classification data: 
 ```
 mkdir -p data/classification
